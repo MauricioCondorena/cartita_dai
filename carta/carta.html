@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,10 +16,16 @@
         rel="stylesheet">
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -31,9 +38,11 @@
 
             display: flex;
             justify-content: center;
-            align-items: center;
 
-            padding: 25px;
+            /* CORRECCION PARA CELULARES */
+            align-items: flex-start;
+
+            padding: 45px 20px;
             overflow-x: hidden;
         }
 
@@ -44,6 +53,7 @@
             inset: 0;
             pointer-events: none;
             overflow: hidden;
+            z-index: 0;
         }
 
         .corazon {
@@ -54,6 +64,7 @@
         }
 
         @keyframes flotar {
+
             from {
                 transform: translateY(0) rotate(0);
                 opacity: 0;
@@ -67,6 +78,7 @@
                 transform: translateY(-110vh) rotate(360deg);
                 opacity: 0;
             }
+
         }
 
         /* CONTENEDOR */
@@ -77,6 +89,7 @@
             text-align: center;
             position: relative;
             z-index: 2;
+            margin: auto;
         }
 
         .titulo {
@@ -146,7 +159,7 @@
             opacity: 0;
         }
 
-        /* CARTA */
+        /* CARTA - CORREGIDA */
 
         .carta {
             background: #fffdfd;
@@ -157,18 +170,35 @@
 
             text-align: left;
 
+            /* Inicialmente oculta */
+            display: none;
+
             opacity: 0;
             transform: translateY(30px);
-            max-height: 0;
-            overflow: hidden;
 
-            transition: opacity 1s ease, transform 1s ease, max-height 1s ease;
+            /* IMPORTANTE: SIN LIMITE DE ALTURA */
+            max-height: none;
+            height: auto;
+            overflow: visible;
         }
 
         .carta.visible {
-            opacity: 1;
-            transform: translateY(0);
-            max-height: 1100px;
+            display: block;
+            animation: aparecerCarta 1s ease forwards;
+        }
+
+        @keyframes aparecerCarta {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
         }
 
         .carta h2 {
@@ -185,6 +215,7 @@
             line-height: 2.1;
             margin-bottom: 20px;
             text-align: justify;
+            overflow-wrap: break-word;
         }
 
         .firma {
@@ -228,18 +259,24 @@
 
         .boton-volver {
             margin-top: 30px;
+            margin-bottom: 25px;
         }
 
         .oculto {
             display: none;
         }
 
-        /* MOVIL */
+        /* MOVILES */
 
         @media (max-width: 500px) {
 
             body {
-                padding: 20px 15px;
+                padding: 30px 15px;
+                align-items: flex-start;
+            }
+
+            .contenedor {
+                width: 100%;
             }
 
             .titulo {
@@ -248,6 +285,7 @@
 
             .descripcion {
                 font-size: 12px;
+                margin-bottom: 30px;
             }
 
             .sobre {
@@ -256,7 +294,14 @@
             }
 
             .carta {
+                width: 100%;
                 padding: 30px 23px;
+                border-radius: 14px;
+
+                /* EVITAR CUALQUIER RECORTE */
+                max-height: none;
+                height: auto;
+                overflow: visible;
             }
 
             .carta h2 {
@@ -266,13 +311,22 @@
             .carta p {
                 font-size: 13px;
                 line-height: 2;
+                margin-bottom: 23px;
+                text-align: left;
             }
 
             .firma {
                 font-size: 26px;
             }
 
+            .boton-volver {
+                width: 100%;
+                max-width: 320px;
+                padding: 17px 15px;
+            }
+
         }
+
     </style>
 
 </head>
@@ -307,7 +361,7 @@
             Abrir mi carta 💌
         </button>
 
-        <!-- CARTA -->
+        <!-- CARTA COMPLETA -->
 
         <article class="carta" id="carta">
 
@@ -315,48 +369,64 @@
 
             <p>
                 Voy a ser sincero bb me equivoqué mucho.
-                Soy consciente de las veces que actue mal y te falle, de las cosas que hago mal dia a dia
+                Soy consciente de las veces que actue mal y te falle,
+                de las cosas que hago mal dia a dia
                 y de todo aquello que quizás
-                te hizo dudar de mí. No quiero justificar mis errores, porque sé que las palabras
+                te hizo dudar de mí. No quiero justificar mis errores,
+                porque sé que las palabras
                 no pueden cambiar lo que ya pasó. Pero sí quiero que sepas algo
-                lo que siento por ti es real, y es algo que no quiero dejar de demostrarte.
+                lo que siento por ti es real,
+                y es algo que no quiero dejar de demostrarte.
             </p>
 
             <p>
-                Hay algo dentro de mí que sigue eligiéndote, que sigue teniendo ganas de intentarlo y que,
+                Hay algo dentro de mí que sigue eligiéndote,
+                que sigue teniendo ganas de intentarlo y que,
                 a pesar de las dificultades,
-                sigue buscando la manera de que esto funcione. No porque crea que todo será perfecto,
+                sigue buscando la manera de que esto funcione.
+                No porque crea que todo será perfecto,
                 sino porque cuando se trata de ti,
-                siento que todavía hay muchas cosas bonitas por las que vale la pena luchar,
-                yo se que quiza no soy el mejor en demostrarlo, pero quiero que sepas que lo intento, y que lo hago con
-                todo mi corazón.
+                siento que todavía hay muchas cosas bonitas
+                por las que vale la pena luchar,
+                yo se que quiza no soy el mejor en demostrarlo,
+                pero quiero que sepas que lo intento,
+                y que lo hago con todo mi corazón.
             </p>
 
             <p>
-                No te prometo que nunca volveré a equivocarme, ni que tendré siempre las palabras correctas
+                No te prometo que nunca volveré a equivocarme,
+                ni que tendré siempre las palabras correctas
                 o las soluciones para todo.
-                Pero sí quiero asegurarte algo mi amor no llegué a tu vida para hacerte daño.
+                Pero sí quiero asegurarte algo mi amor
+                no llegué a tu vida para hacerte daño.
             </p>
 
             <p>
-                No te prometo una historia perfecta, porque sé que no existe. Pero quiero darte algo mucho más sincero:
-                mis ganas de mejorar, mi disposición para aprender a amarte de la manera que mereces y mi voluntad de no
-                rendirme ante la primera dificultad.
+                No te prometo una historia perfecta,
+                porque sé que no existe. Pero quiero darte
+                algo mucho más sincero:
+                mis ganas de mejorar, mi disposición para
+                aprender a amarte de la manera que mereces
+                y mi voluntad de no rendirme ante la primera dificultad.
 
-                Porque, al final, entre tantas cosas que podrían pasar, hay algo que tengo claro: yo quiero que seas tú.
-                Quiero seguir encontrando motivos para elegirte, seguir construyendo contigo y demostrarte, con hechos y
-                no solamente con palabras, que mi intención siempre ha sido que seamos felices juntos.
+                Porque, al final, entre tantas cosas que podrían pasar,
+                hay algo que tengo claro: yo quiero que seas tú.
+                Quiero seguir encontrando motivos para elegirte,
+                seguir construyendo contigo y demostrarte,
+                con hechos y no solamente con palabras,
+                que mi intención siempre ha sido que seamos felices juntos.
             </p>
 
             <p>
-                Psdt: Te amo bb, y no quiero perderte, eres lo mejor que me ha pasado en la vida.
-                Y esta es una funcion de la carta que te estaba escribiendo para cuando te iba a pedir
-                que fueras mi novia, y bueno owo
+                Psdt: Te amo bb, y no quiero perderte,
+                eres lo mejor que me ha pasado en la vida.
+                Y esta es una funcion de la carta que te estaba escribiendo
+                para cuando te iba a pedir que fueras mi novia,
+                y bueno owo
             </p>
 
             <div class="firma">
                 Con todo mi cariño y amor Mau ❤️
-
             </div>
 
             <div class="corazon-final">
@@ -387,16 +457,22 @@
 
             boton.classList.add("oculto");
 
-            descripcion.textContent = "Estas palabras son para ti ❤️";
+            descripcion.textContent =
+                "Estas palabras son para ti ❤️";
 
             setTimeout(() => {
 
                 carta.classList.add("visible");
 
-                carta.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
+                // DESPLAZARSE AL INICIO DE LA CARTA
+                setTimeout(() => {
+
+                    carta.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }, 200);
 
             }, 650);
 
@@ -405,7 +481,8 @@
 
         // CORAZONES FLOTANTES
 
-        const contenedor = document.getElementById("corazones");
+        const contenedor =
+            document.getElementById("corazones");
 
         function crearCorazon() {
 
@@ -413,13 +490,17 @@
 
             corazon.classList.add("corazon");
 
-            corazon.innerHTML = Math.random() > 0.5 ? "❤" : "♡";
+            corazon.innerHTML =
+                Math.random() > 0.5 ? "❤" : "♡";
 
-            corazon.style.left = Math.random() * 100 + "%";
+            corazon.style.left =
+                Math.random() * 100 + "%";
 
-            corazon.style.fontSize = (14 + Math.random() * 20) + "px";
+            corazon.style.fontSize =
+                (14 + Math.random() * 20) + "px";
 
-            corazon.style.animationDuration = (6 + Math.random() * 5) + "s";
+            corazon.style.animationDuration =
+                (6 + Math.random() * 5) + "s";
 
             contenedor.appendChild(corazon);
 
