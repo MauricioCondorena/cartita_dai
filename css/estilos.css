@@ -1,0 +1,492 @@
+
+/* ==============================
+   CONFIGURACION GENERAL
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff5f8;
+    color: #743c53;
+    overflow-x: hidden;
+}
+
+:root {
+    --rosa: #e88ca9;
+    --rosa-oscuro: #a83e65;
+    --rosa-claro: #ffe4ec;
+    --blanco: #ffffff;
+}
+
+
+/* ==============================
+   CORAZONES FLOTANTES
+============================== */
+
+.corazones {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.corazon {
+    position: absolute;
+    bottom: -50px;
+    color: #ec8cac;
+    font-size: 20px;
+    opacity: 0.65;
+    animation: flotar 9s linear forwards;
+}
+
+@keyframes flotar {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* ==============================
+   PORTADA
+============================== */
+
+.portada {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    background:
+        radial-gradient(circle at 20% 20%, #ffffff 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #ffd1df 0%, transparent 35%),
+        linear-gradient(135deg, #ffe5ed, #f8c1d3, #fff0f5);
+
+    padding: 30px;
+}
+
+.contenido-portada {
+    animation: aparecer 1.5s ease;
+}
+
+.subtitulo {
+    color: #a85d78;
+    font-size: 12px;
+    letter-spacing: 5px;
+    font-weight: 500;
+}
+
+.portada h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(55px, 9vw, 100px);
+    color: #a83e65;
+    margin: 25px 0;
+    line-height: 1.1;
+}
+
+.portada p {
+    font-size: 16px;
+    color: #8c536a;
+    margin-bottom: 35px;
+}
+
+.boton {
+    display: inline-block;
+    text-decoration: none;
+
+    background: linear-gradient(135deg, #d96e93, #ec9bb5);
+
+    color: white;
+
+    padding: 16px 32px;
+    border-radius: 50px;
+
+    font-size: 14px;
+
+    box-shadow: 0 8px 25px rgba(200, 90, 130, 0.25);
+
+    transition: all 0.4s ease;
+}
+
+.boton:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(200, 90, 130, 0.4);
+}
+
+.flecha {
+    position: absolute;
+    bottom: 30px;
+    font-size: 35px;
+    color: #a83e65;
+    animation: rebote 1.5s infinite;
+}
+
+@keyframes rebote {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(12px);
+    }
+}
+
+
+/* ==============================
+   MENSAJE
+============================== */
+
+.mensaje {
+    padding: 110px 20px;
+    text-align: center;
+    background: #fff9fb;
+}
+
+.mensaje h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(35px, 5vw, 55px);
+    color: #b54e74;
+    margin: 20px 0;
+}
+
+.mensaje p {
+    max-width: 600px;
+    margin: auto;
+    line-height: 2;
+    color: #936477;
+    font-size: 15px;
+}
+
+.decoracion {
+    color: #e58ba8;
+    font-size: 35px;
+}
+
+
+/* ==============================
+   ALBUM
+============================== */
+
+.album {
+    padding: 100px 8%;
+
+    background: linear-gradient(
+        180deg,
+        #fff0f5,
+        #ffe4ec,
+        #fff5f8
+    );
+}
+
+.titulo-seccion {
+    text-align: center;
+    margin-bottom: 65px;
+}
+
+.titulo-seccion span {
+    color: #c16b88;
+    letter-spacing: 4px;
+    font-size: 12px;
+}
+
+.titulo-seccion h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(42px, 6vw, 60px);
+    color: #a83e65;
+    margin: 15px 0;
+}
+
+.titulo-seccion p {
+    color: #936477;
+    font-size: 14px;
+}
+
+
+/* ==============================
+   GALERIA DE FOTOGRAFIAS
+============================== */
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 45px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.foto {
+    background: white;
+    padding: 14px 14px 25px;
+    border-radius: 5px;
+
+    box-shadow: 0 10px 30px rgba(170, 70, 110, 0.15);
+
+    transform: rotate(-2deg);
+
+    transition: all 0.4s ease;
+
+    text-align: center;
+    cursor: pointer;
+}
+
+.foto:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.foto:hover {
+    transform: rotate(0deg) scale(1.04);
+    box-shadow: 0 20px 40px rgba(170, 70, 110, 0.25);
+    z-index: 2;
+}
+
+.foto img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 3px;
+    display: block;
+}
+
+.foto p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 23px;
+    color: #a83e65;
+    margin: 18px 0 0;
+}
+
+
+/* ==============================
+   SECCION FINAL
+============================== */
+
+.final {
+    padding: 110px 20px;
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #fbd0df,
+        #fff0f5,
+        #f8c3d5
+    );
+}
+
+.corazon-grande {
+    font-size: 65px;
+    animation: latido 1.5s infinite;
+}
+
+@keyframes latido {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.final h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(35px, 5vw, 55px);
+    color: #a83e65;
+    margin: 20px 0;
+}
+
+.final p {
+    color: #936477;
+    margin-bottom: 35px;
+}
+
+.boton-carta {
+    background: linear-gradient(135deg, #b94e76, #e78aa9);
+    padding: 18px 38px;
+    font-size: 16px;
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+    padding: 25px;
+    text-align: center;
+    background: #a83e65;
+    color: white;
+    font-size: 13px;
+}
+
+
+/* ==============================
+   VISOR DE FOTOGRAFIAS
+============================== */
+
+.visor {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(35, 10, 22, 0.94);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+    padding: 50px;
+}
+
+.visor.activo {
+    display: flex;
+}
+
+.visor img {
+    max-width: 85%;
+    max-height: 85vh;
+    object-fit: contain;
+
+    border: 8px solid white;
+    border-radius: 5px;
+
+    box-shadow: 0 0 40px rgba(255, 180, 210, 0.3);
+}
+
+.cerrar-visor,
+.anterior,
+.siguiente {
+    position: absolute;
+
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+
+    color: white;
+    font-size: 35px;
+
+    cursor: pointer;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.cerrar-visor:hover,
+.anterior:hover,
+.siguiente:hover {
+    background: #e88ca9;
+}
+
+.cerrar-visor {
+    top: 25px;
+    right: 30px;
+}
+
+.anterior {
+    left: 25px;
+}
+
+.siguiente {
+    right: 25px;
+}
+
+
+/* ==============================
+   ANIMACIONES
+============================== */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 650px) {
+
+    .portada {
+        min-height: 90vh;
+    }
+
+    .subtitulo {
+        letter-spacing: 3px;
+        font-size: 10px;
+    }
+
+    .portada p {
+        font-size: 14px;
+    }
+
+    .mensaje {
+        padding: 75px 25px;
+    }
+
+    .album {
+        padding: 70px 7%;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .foto img {
+        height: 280px;
+    }
+
+    .visor {
+        padding: 15px;
+    }
+
+    .visor img {
+        max-width: 90%;
+        max-height: 75vh;
+    }
+
+    .anterior {
+        left: 5px;
+    }
+
+    .siguiente {
+        right: 5px;
+    }
+
+}
